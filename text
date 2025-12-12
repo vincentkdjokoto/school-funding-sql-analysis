@@ -1,0 +1,68 @@
+## school-funding-sql-analysis
+
+### **Key Tables & Relationships**
+1. **districts**: Master table for school districts with geographic and demographic info
+2. **schools**: Individual schools with enrollment and basic characteristics
+3. **funding_details**: Annual financial data including per-student spending
+4. **academic_outcomes**: Performance metrics including graduation rates
+5. **school_demographics**: Student population characteristics
+
+## SQL Analysis Features
+
+### **Technical Skills Demonstrated**
+- **Complex JOINs**: Multiple table relationships with appropriate keys
+- **Common Table Expressions (CTEs)**: For modular, readable queries
+- **Window Functions**: `RANK()`, `PERCENT_RANK()`, partitioning
+- **Statistical Calculations**: Correlations, percentiles, year-over-year changes
+- **CASE Statements**: Categorical analysis and outlier identification
+
+### **Key Queries**
+1. **Basic Correlation Analysis**: Direct spending vs. graduation rate
+2. **Multivariate Analysis**: Controlling for poverty levels
+3. **Efficiency Metrics**: Graduation per dollar spent
+4. **Year-over-Year Trends**: Spending and outcome changes
+5. **Geographic Patterns**: Urban/rural comparisons
+
+## Key Findings
+
+### **1. Overall Relationship**
+- **Moderate positive correlation** (r ≈ 0.65) between per-student spending and graduation rates
+- Schools spending >$16k per student average **92.5%** graduation rate
+- Schools spending <$14k per student average **78.8%** graduation rate
+
+### **2. Socioeconomic Factors Matter**
+- Relationship is **stronger in high-poverty schools**:
+  - High-poverty schools: r = 0.72
+  - Low-poverty schools: r = 0.41
+- **Poverty explains ~40%** of the variation in graduation rates
+
+### **3. Efficiency Varies Significantly**
+- **"High Performance, Low Cost" schools** exist: 12% of schools graduate >90% with <$15k spending
+- **Urban schools** show the highest spending but not always the best outcomes
+- **Rural schools** often achieve moderate outcomes with lower spending
+
+### **4. Geographic Patterns**
+- **Northeastern states** have highest per-student spending ($16,200 average)
+- **Southern states** have wider spending disparities but similar efficiency
+- **Urban/Suburban divide**: Urban schools spend 18% more but graduate only 4% more students
+
+## Visualization & Export
+
+### **Generated Visualizations**
+1. **Scatter Plot**: Spending vs. Graduation Rate (with poverty gradient)
+2. **Bar Chart**: Average spending by urban/rural classification
+3. **Efficiency Matrix**: Schools plotted by spending and outcomes
+4. **Correlation Heatmap**: Relationships between all metrics
+
+### **Exported CSV Files**
+- `spending_vs_grad_rate.csv`: For scatter plot visualization
+- `spending_by_urban_rural.csv`: For comparative bar charts
+- `school_efficiency_metrics.csv`: For efficiency analysis
+
+## How to Use This Project
+
+### **Setup Instructions**
+1. **Database Setup**:
+   ```bash
+   mysql -u root -p
+   SOURCE sql/analysis_queries.sql
